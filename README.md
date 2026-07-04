@@ -1,98 +1,86 @@
 <div align="center">
 
-# Hi, I'm Playboy-gg 👋
+# Playboy-gg
 
-### Android Developer • UI/UX Enthusiast • Privacy Focused
+**Native Android Developer — Kotlin · Jetpack Compose · Media Systems · Clean Architecture**
 
-<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=24&pause=1500&color=00D4FF&center=true&vCenter=true&width=700&lines=Building+clean+Android+experiences.;Privacy+first+development.;Performance+matters.;Always+learning.+Always+improving."/>
+<img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=22&pause=2000&color=00D4FF&center=true&vCenter=true&width=650&lines=Production+Android+architecture.;Debugging+at+the+ExoPlayer%2FHilt%2FRoom+layer.;Material+3+Expressive%2C+done+correctly.;I+ship+complete+features%2C+not+demos."/>
 
 <br>
 
-<img src="https://komarev.com/ghpvc/?username=Playboy-gg&style=for-the-badge&label=PROFILE+VIEWS"/>
-<img src="https://img.shields.io/github/followers/Playboy-gg?style=for-the-badge&logo=github"/>
-<img src="https://img.shields.io/github/stars/Playboy-gg?style=for-the-badge&logo=github"/>
+<img src="https://komarev.com/ghpvc/?username=Playboy-gg&style=flat-square&label=PROFILE%20VIEWS&color=00D4FF"/>
+<img src="https://img.shields.io/github/followers/Playboy-gg?style=flat-square&logo=github&color=00D4FF"/>
 
 </div>
 
 ---
 
-# 👨‍💻 About Me
+## About
 
-I'm an Android developer who enjoys building applications that feel polished, fast, and reliable. I like creating software that isn't just functional but also refined, with attention given to every animation, interaction, and visual detail.
+I build native Android applications from architecture through shipped feature — not prototypes. My work centers on media playback systems, dependency injection at scale, and UI that matches Material 3 Expressive's actual motion and theming spec rather than a superficial color swap.
 
-My interests revolve around native Android development, thoughtful UI/UX, privacy-focused applications, media technologies, and experimenting with modern development practices. I enjoy solving complex implementation challenges and continuously improving my projects with cleaner architecture and better user experiences.
-
----
-
-# ⚙️ What I Like Building
-
-- 📱 Native Android Applications
-- 🎨 Modern Material UI
-- ⚡ High Performance Apps
-- 🔒 Privacy-Focused Experiences
-- 🎵 Media Applications
-- 🤖 AI & Machine Learning Experiments
-- 🧩 Clean Architecture
-- ✨ Smooth Animations
+What separates my projects from portfolio filler: I do full-codebase audits and fix root causes, not symptoms. A "duplicate album art" bug isn't a UI patch — it's tracing whether the collision is in MediaStore's art-existence check, the cache key, or a blank-URI guard, and fixing the one that's actually broken.
 
 ---
 
-# 🛠 Tech Stack
+## Engineering Highlights
+
+**MediaVault — Compose Music/Video Player** (Kotlin, Hilt, Media3/ExoPlayer, Room, Coil)
+A 33-issue architecture audit surfaced problems most reviews miss:
+- **Hilt DI conflict**: two `ExoPlayer` instances were being injected without qualifiers, causing playback state to silently desync between the service and UI. Fixed with `@ServicePlayer`/`@SharedPlayer` qualifier annotations — the kind of bug that passes every manual test and fails only under real usage patterns.
+- **Main-thread I/O**: `ContentResolver` queries were running synchronously on the main thread, causing frame drops during library scans. Moved to coroutine dispatchers with proper cancellation.
+- **Security**: found a hardcoded keystore password committed to version control — flagged and removed before it shipped.
+- **Rendering**: rebuilt the frosted-glass nav bar using `android.graphics.RenderEffect` applied directly to leaf `Box` nodes, not wrapped `ComposeView` blur hacks that break on scroll.
+
+**NexaDial — Production Dialer** (Kotlin, XML, MVVM, Room)
+Replaced Material Components' `BottomNavigationView` after it caused reproducible inflate crashes — built a custom bottom nav instead of working around a framework component that didn't fit the use case. Also implemented `RoleManager`-based default-dialer prompting and a custom `BarChartView` for call statistics, drawn with raw `Canvas` rather than pulling in a charting dependency for one screen.
+
+**M3E Showcase — Material 3 Expressive Reference Implementation**
+Full documentation and working Android project covering `DynamicColors`, spring-based motion physics, and `MaterialContainerTransform`. Debugged AAPT2 build failures caused by `cornerSizePercent` and namespace collisions between `android.R.attr` and Material's own `R.attr` — a class of error that's poorly documented and easy to misdiagnose as a Gradle problem.
+
+---
+
+## How I Approach a Codebase
+
+Given an unfamiliar or broken codebase, I don't patch the first symptom I find. I look for the root cause, and I care whether the fix is defensible under load, not just under a manual test pass. On DI-heavy Android projects specifically, most subtle bugs live at qualifier boundaries and lifecycle scope mismatches — that's where I look first.
+
+I default to complete, production-grade output over stubs or `// TODO` placeholders, and I treat XML/Views versus Compose as a real architectural decision per project, not a default I don't question.
+
+---
+
+## Stack
+
+<p align="left">
+<img src="https://skillicons.dev/icons?i=kotlin,java,androidstudio,git,github,firebase,tensorflow"/>
+</p>
+
+| Layer | Tools |
+|---|---|
+| Language | Kotlin, Java |
+| UI | Jetpack Compose, Material 3 Expressive, classic XML/Views |
+| Architecture | MVVM, Clean Architecture, Hilt |
+| Persistence | Room, SQLCipher |
+| Media | Media3/ExoPlayer, Coil |
+| Async | Kotlin Coroutines, Flow/StateFlow |
+| ML | TensorFlow Lite (on-device inference) |
+
+---
+
+## GitHub Stats
 
 <p align="center">
-
-<img src="https://skillicons.dev/icons?i=kotlin,java,androidstudio,git,github,firebase,tensorflow,vscode"/>
-
+<img height="165" src="https://github-readme-stats.vercel.app/api?username=Playboy-gg&show_icons=true&theme=transparent&hide_border=true&count_private=true"/>
+<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Playboy-gg&layout=compact&theme=transparent&hide_border=true"/>
 </p>
 
 ---
 
-# 📊 GitHub Statistics
+## Get in Touch
 
-<p align="center">
-
-<img height="170" src="https://github-readme-stats.vercel.app/api?username=Playboy-gg&show_icons=true&theme=transparent&hide_border=true"/>
-
-<img height="170" src="https://github-readme-streak-stats.herokuapp.com/?user=Playboy-gg&theme=transparent&hide_border=true"/>
-
+<!-- Fill in real links before publishing -->
+<p align="left">
+<a href="mailto:your-email@example.com"><img src="https://img.shields.io/badge/Email-EA4335?style=flat-square&logo=gmail&logoColor=white"/></a>
+<a href="https://linkedin.com/in/your-handle"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white"/></a>
 </p>
-
-<p align="center">
-
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Playboy-gg&layout=compact&theme=transparent&hide_border=true"/>
-
-</p>
-
----
-
-# 🏆 GitHub Trophies
-
-<p align="center">
-
-<img src="https://github-profile-trophy.vercel.app/?username=Playboy-gg&theme=algolia&no-frame=true"/>
-
-</p>
-
----
-
-# 💭 Philosophy
-
-> Build software that is simple to use, enjoyable to interact with, and powerful under the hood.
-
----
-
-# 🚀 Featured Project
-
-## **MediaVault**
-
-A project that represents my focus on creating polished Android experiences with attention to design, usability, performance, and privacy.
-
----
-
-<div align="center">
-
-### ⭐ Thanks for visiting my profile!
-
-*"Great software is built one thoughtful improvement at a time."*
 
 </div>
